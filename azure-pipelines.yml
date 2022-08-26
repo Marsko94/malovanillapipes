@@ -37,7 +37,7 @@ steps:
     displayName: 'Bump version and set variables'
   - task: JavaToolInstaller@0
     inputs:
-      versionSpec: '17'
+      versionSpec: '11'
       jdkArchitectureOption: 'x64'
       jdkSourceOption: 'PreInstalled'
   - task: AndroidSigning@3

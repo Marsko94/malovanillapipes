@@ -1,5 +1,3 @@
-import com.android.internal.application
-
 import com.android.build.OutputFile
 
 /**
@@ -132,11 +130,6 @@ android {
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion
-
-     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-    }
 
     defaultConfig {
         applicationId "com.malovanillapipe"
