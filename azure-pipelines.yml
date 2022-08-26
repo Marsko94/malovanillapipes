@@ -74,7 +74,7 @@ steps:
     displayName: 'Upload APK to AppCenter'
     inputs:
       serverEndpoint: 'App Center'
-      appSlug: 'hnadeem/MyProject-Android'
+      appSlug: 'markusskogvold-gmail.com/malo-vanillaRN-Life'
       appFile: 'android/app/build/outputs/apk/release/app-release-unsigned.apk'
       releaseNotesOption: 'file'
       isMandatory: true
@@ -91,57 +91,57 @@ steps:
       git push origin $(Build.SourceBranchName)
       git push --tags
     displayName: Bump commit
-  - task: InstallAppleCertificate@2
-    displayName: Install Apple Certificate
-    inputs:
-      certSecureFile: 'MobileProd.p12'
-      certPwd: '$(AppleCertificatePassword)'
-      keychain: 'temp'
-      deleteCert: true
-  - task: InstallAppleProvisioningProfile@1
-    displayName: 'Install Apple Provisioning Profile'
-    inputs:
-      provisioningProfileLocation: 'secureFiles'
-      provProfileSecureFile: 'MyProject.mobileprovision'
-      removeProfile: true
-  - task: CocoaPods@0
-    displayName: 'Install CocoaPods'
-    inputs:
-      workingDirectory: 'ios'
-  - task: Xcode@5
-    displayName: 'Build IPA'
-    inputs:
-      actions: 'build'
-      configuration: 'Release'
-      sdk: 'iphoneos'
-      xcWorkspacePath: 'ios/MyProject.xcworkspace'
-      scheme: 'MyProject'
-      packageApp: true
-      exportPath: 'output'
-      signingOption: 'manual'
-      signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
-      provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
-  - task: CopyFiles@2
-    displayName: 'Copy IPA'
-    inputs:
-      contents: '**/*.ipa'
-      targetFolder: '$(build.artifactStagingDirectory)'
-      overWrite: true
-      flattenFolders: true
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish IPA to artifacts'
-    inputs:
-      PathtoPublish: '$(build.artifactStagingDirectory)'
-      ArtifactName: 'ios'
-      publishLocation: 'Container'
-  - task: AppCenterDistribute@3
-    displayName: 'Upload IPA to AppCenter'
-    inputs:
-      serverEndpoint: 'App Center'
-      appSlug: 'hnadeem/MyProject-iOS'
-      appFile: 'output/MyProject.ipa'
-      releaseNotesOption: 'file'
-      isMandatory: true
-      destinationType: 'groups'
-      distributionGroupId: '058a4704-ea24-4877-a2f0-bdfaff9335dc'
-      isSilent: true
+  # - task: InstallAppleCertificate@2
+  #   displayName: Install Apple Certificate
+  #   inputs:
+  #     certSecureFile: 'MobileProd.p12'
+  #     certPwd: '$(AppleCertificatePassword)'
+  #     keychain: 'temp'
+  #     deleteCert: true
+  # - task: InstallAppleProvisioningProfile@1
+  #   displayName: 'Install Apple Provisioning Profile'
+  #   inputs:
+  #     provisioningProfileLocation: 'secureFiles'
+  #     provProfileSecureFile: 'MyProject.mobileprovision'
+  #     removeProfile: true
+  # - task: CocoaPods@0
+  #   displayName: 'Install CocoaPods'
+  #   inputs:
+  #     workingDirectory: 'ios'
+  # - task: Xcode@5
+  #   displayName: 'Build IPA'
+  #   inputs:
+  #     actions: 'build'
+  #     configuration: 'Release'
+  #     sdk: 'iphoneos'
+  #     xcWorkspacePath: 'ios/MyProject.xcworkspace'
+  #     scheme: 'MyProject'
+  #     packageApp: true
+  #     exportPath: 'output'
+  #     signingOption: 'manual'
+  #     signingIdentity: '$(APPLE_CERTIFICATE_SIGNING_IDENTITY)'
+  #     provisioningProfileUuid: '$(APPLE_PROV_PROFILE_UUID)'
+  # - task: CopyFiles@2
+  #   displayName: 'Copy IPA'
+  #   inputs:
+  #     contents: '**/*.ipa'
+  #     targetFolder: '$(build.artifactStagingDirectory)'
+  #     overWrite: true
+  #     flattenFolders: true
+  # - task: PublishBuildArtifacts@1
+  #   displayName: 'Publish IPA to artifacts'
+  #   inputs:
+  #     PathtoPublish: '$(build.artifactStagingDirectory)'
+  #     ArtifactName: 'ios'
+  #     publishLocation: 'Container'
+  # - task: AppCenterDistribute@3
+  #   displayName: 'Upload IPA to AppCenter'
+  #   inputs:
+  #     serverEndpoint: 'App Center'
+  #     appSlug: 'hnadeem/MyProject-iOS'
+  #     appFile: 'output/MyProject.ipa'
+  #     releaseNotesOption: 'file'
+  #     isMandatory: true
+  #     destinationType: 'groups'
+  #     distributionGroupId: '058a4704-ea24-4877-a2f0-bdfaff9335dc'
+  #     isSilent: true
