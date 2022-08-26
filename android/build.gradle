@@ -3,11 +3,26 @@ import org.apache.tools.ant.taskdefs.condition.Os
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+     def getMyVersionCode = { ->
+        def code = project.hasProperty('versionCode') ? versionCode.toInteger() : 1
+        println "VersionCode is set to $code"
+        return code
+    }
+
+    def getMyVersionName = { ->
+        def name = project.hasProperty('versionName') ? versionName : "1.0"
+        println "VersionName is set to $name"
+        return name
+    }
+
     ext {
         buildToolsVersion = "31.0.0"
         minSdkVersion = 21
         compileSdkVersion = 31
         targetSdkVersion = 31
+         targetSdkVersion = 29       
+        versionName = getMyVersionName()
+       versionCode = getMyVersionCode()
 
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
