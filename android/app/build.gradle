@@ -133,6 +133,11 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+     compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
     defaultConfig {
         applicationId "com.malovanillapipe"
         minSdkVersion rootProject.ext.minSdkVersion
