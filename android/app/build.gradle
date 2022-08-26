@@ -1,4 +1,5 @@
 import com.android.build.OutputFile
+apply plugin: 'com.android.application'
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -128,17 +129,27 @@ def reactNativeArchitectures() {
 
 android {
     ndkVersion rootProject.ext.ndkVersion
-
     compileSdkVersion rootProject.ext.compileSdkVersion
+
 
     defaultConfig {
         applicationId "com.malovanillapipe"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+      
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
 
+ android {
+    android {
+    compileSdkVersion 31
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "com.example.abc.test"
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+ }
         if (isNewArchitectureEnabled()) {
             // We configure the NDK build only if you decide to opt-in for the New Architecture.
             externalNativeBuild {
